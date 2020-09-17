@@ -1,37 +1,23 @@
-# hello-world
-
-FIXME: Write a one-line description of your library/project.
+# figwheel-example
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+Demonstrate an issue with figwheel and a possible solution.
 
-## Development
+## Reproduce
 
-To get an interactive development environment run:
+1. Delete [this](https://github.com/komcrad/figwheel-example/blob/master/src/hello_world/core.cljs#L20) line in your local branch and save file.
+2. Run `lein fig:build`
+3. Revert step 1. Add `[[]]` back. Save file.
+4. Figwheel will load a blank page.
+5. Repeat step one. Save file.
+6. Figwheel will still load a blank page.
+7. Execute `:cljs/quit` in figwheel repl
 
-    lein fig:build
+## Possible Solution
 
-This will auto compile and send all changes to the browser without the
-need to reload. After the compilation process is complete, you will
-get a Browser Connected REPL. An easy way to try it is:
-
-    (js/alert "Am I connected?")
-
-and you should see an alert in the browser window.
-
-To clean all compiled files:
-
-	lein clean
-
-To create a production build run:
-
-	lein clean
-	lein fig:min
-
-
-## License
-
-Copyright © 2018 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+[This](https://github.com/komcrad/figwheel-core/commit/05fe7c0d2455f4b21df216664796998524200b4a) commit should fix the issue.
+1. Clone https://github.com/komcrad/figwheel-core
+2. Configure project.clj to be version 2.11.0
+3. `lein install`
+4. Repeat steps in the 'Reproduce' section. Step 6 should be false.
